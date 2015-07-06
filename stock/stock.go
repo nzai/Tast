@@ -12,7 +12,7 @@ import (
 	"regexp"
 	"strings"
 
-	"pinang/TradingSystem/config"
+	"github.com/nzai/Tast/config"
 )
 
 const (

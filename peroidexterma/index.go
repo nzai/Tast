@@ -12,9 +12,9 @@ import (
 	"strconv"
 	"strings"
 
-	"pinang/TradingSystem/config"
-	"pinang/TradingSystem/history"
-	"pinang/TradingSystem/stock"
+	"github.com/nzai/Tast/config"
+	"github.com/nzai/Tast/history"
+	"github.com/nzai/Tast/stock"
 )
 
 type PeroidExtermaIndex struct {

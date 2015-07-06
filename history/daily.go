@@ -16,8 +16,8 @@ import (
 	"strings"
 	"time"
 
-	"pinang/TradingSystem/config"
-	"pinang/TradingSystem/stock"
+	"github.com/nzai/Tast/config"
+	"github.com/nzai/Tast/stock"
 )
 
 const (
