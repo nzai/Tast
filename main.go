@@ -4,10 +4,12 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+
 	"github.com/nzai/Tast/config"
 	"github.com/nzai/Tast/history"
 	"github.com/nzai/Tast/peroidexterma"
 	"github.com/nzai/Tast/stock"
+	"github.com/nzai/Tast/trading"
 	"github.com/nzai/Tast/turtle"
 )
 
@@ -67,6 +69,13 @@ func main() {
 	err = peroidexterma.UpdateAll()
 	if err != nil {
 		log.Fatalf("更新区间极值指标发生错误:%v", err)
+		return
+	}
+
+	//	测试海龟交易系统
+	err = trading.TestAll()
+	if err != nil {
+		log.Fatalf("测试海龟交易系统发生错误:%v", err)
 		return
 	}
 }
