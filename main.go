@@ -4,11 +4,11 @@ import (
 	"log"
 	"os"
 	"path/filepath"
-	"pinang/TradingSystem/config"
-	"pinang/TradingSystem/history"
-	"pinang/TradingSystem/peroidexterma"
-	"pinang/TradingSystem/stock"
-	"pinang/TradingSystem/turtle"
+	"github.com/nzai/Tast/config"
+	"github.com/nzai/Tast/history"
+	"github.com/nzai/Tast/peroidexterma"
+	"github.com/nzai/Tast/stock"
+	"github.com/nzai/Tast/turtle"
 )
 
 const (
