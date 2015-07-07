@@ -38,11 +38,25 @@ func main() {
 
 	//	日志文件路径
 	logPath := config.GetString(configLogSection, configLogKey, configLogDefaultFileName)
-	err = setLogger(logPath)
+	logDir := filepath.Dir(logPath)
+	_, err = os.Stat(logDir)
+	if os.IsNotExist(err) {
+		err = os.Mkdir(logDir, 0x777)
+		if err != nil {
+			log.Fatal(err)
+			return
+		}
+	}
+
+	file, err := os.OpenFile(logPath, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0x777)
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
+	defer file.Close()
+
+	//	设置日志输出文件
+	log.SetOutput(file)
 
 	//	更新股票信息
 	err = stock.UpdateAll()
@@ -78,27 +92,4 @@ func main() {
 		log.Fatalf("测试海龟交易系统发生错误:%v", err)
 		return
 	}
-}
-
-//	设置日志输出文件
-func setLogger(path string) error {
-
-	logDir := filepath.Dir(path)
-	_, err := os.Stat(logDir)
-	if os.IsNotExist(err) {
-		err = os.Mkdir(logDir, 0x777)
-		if err != nil {
-			return err
-		}
-	}
-
-	file, err := os.OpenFile(path, os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0x777)
-	if err != nil {
-		return err
-	}
-	//defer file.Close()
-
-	log.SetOutput(file)
-
-	return nil
 }
